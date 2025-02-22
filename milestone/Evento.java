@@ -75,14 +75,14 @@ public class Evento {
     public void prenota(LocalDate nuovadata) {
 
         if(nuovadata.isBefore(LocalDate.now())){
-        // messaggio di allert in caso contrario
+        // Messaggio di allert in caso contrario
         throw new IllegalArgumentException("La data dell'evento non può essere una data nel passato.");
         }
         
         if (numeroPostiPrenotati >= numeroPostiTotali) {
             throw new IllegalArgumentException("Non ci sono posti disponibili");
         } 
-        // aggiungo un posto
+        // Aggiungo un posto
         numeroPostiPrenotati++;
 
     }
@@ -99,7 +99,7 @@ public class Evento {
             throw new IllegalArgumentException("Il numero di posti totali non è valido.");    
     }
         // rimuovo un posto
-        numeroPostiPrenotati++; 
+        numeroPostiPrenotati--; 
 }
     
     @Override
