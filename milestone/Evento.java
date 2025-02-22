@@ -81,10 +81,12 @@ public class Evento {
         // Messaggio di allert in caso contrario
         throw new IllegalArgumentException("La data dell'evento non può essere una data nel passato.");
         }
-        
+
+        // Messaggio di allert in caso di posti non disponibili
         if (numeroPostiPrenotati >= numeroPostiTotali) {
             throw new IllegalArgumentException("Non ci sono posti disponibili");
         } 
+        
         // Aggiungo un posto
         numeroPostiPrenotati++;
 
@@ -107,7 +109,7 @@ public class Evento {
     
     @Override
     public String toString() {
-    // Metodo java incorporsto in java documentazione oracle https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html -> Formattatore DateTimeFormatter = DateTimeFormatter.ofPattern("aaaa MM gg");
+    // Metodo java incorporato in java documentazione oracle https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html -> Formattatore DateTimeFormatter = DateTimeFormatter.ofPattern("aaaa MM gg");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return "Evento: " + titolo + ", Data: " + data.format(formatter);
     }
