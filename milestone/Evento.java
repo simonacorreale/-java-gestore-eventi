@@ -5,16 +5,21 @@ import java.time.format.DateTimeFormatter;
 
 /* Step 1
 Creare una classe Evento che abbia le seguenti proprietà:
-titolo
-data
-numero di posti in totale
-numero di posti prenotati
-Quando si istanzia un nuovo evento questi attributi devono essere tutti valorizzati nel costruttore, tranne posti prenotati che va inizializzato a 0.
-Inserire il controllo che la data non sia già passata e che il numero di posti totali sia positivo. In caso contrario il programma deve lanciare una eccezione.
+titolo✅
+data✅
+numero di posti in totale ✅
+numero di posti prenotati✅
+
+Quando si istanzia un nuovo evento questi attributi devono essere tutti valorizzati nel costruttore, tranne posti prenotati che va inizializzato a 0.✅
+Inserire il controllo che la data non sia già passata✅ e che il numero di posti totali sia positivo.✅
+
+In caso contrario il programma deve lanciare una eccezione.✅
+
 Aggiungere metodi getter e setter in modo che:
-titolo sia in lettura e in scrittura
-data sia in lettura e scrittura
-numero di posti totale sia solo in lettura
+
+titolo sia in lettura e in scrittura✅
+data sia in lettura e scrittura✅
+numero di posti totale sia solo in lettura✅
 numero di posti prenotati sia solo in lettura
 
 Vanno inoltre implementati dei metodi public che svolgono le seguenti funzioni:
@@ -28,7 +33,7 @@ public class Evento {
 
     private String titolo;
     private LocalDate data;
-    private int numeroPostiPrenotati = 0;
+    private int numeroPostiPrenotati;
     private final int numeroPostiTotali;
 
     // Costruttore
@@ -46,38 +51,47 @@ public class Evento {
         this.titolo = titolo;
         this.data = data;
         this.numeroPostiTotali = numeroPostiTotali;
+        this.numeroPostiPrenotati = 0;
 
     }
     // Getter titolo
     public String getTitolo() {
         return titolo;
     }
-
-    // Getter data
-    public LocalDate getData() {
-        return data;
+    // Setter titolo
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
     }
 
     // Getter posti totali
     public int getPostiTotali() {
-        return numeroPostiTotali;
+    return numeroPostiTotali;
     }
 
-    // Setter
-    public void setTitolo(String titolo) {
-        this.titolo = titolo;
+    // Getter posti prenotati
+    public int getPostiPrenotati(){
+        return numeroPostiPrenotati;
+    };
+    
+    // Getter data
+    public LocalDate getData() {
+        return data;
     }
-    // Setter
+    // Setter data
     public void setData(LocalDate data) {
 
+        if (data.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Non puoi impostare una data passata");
+        };
+        
         this.data = data;
-       
+
     }
 
     // Metodi per la prenotazione e disdetta
-    public void prenota(LocalDate nuovadata) {
+    public void prenota() {
 
-        if(nuovadata.isBefore(LocalDate.now())){
+        if(data.isBefore(LocalDate.now())){
         // Messaggio di allert in caso contrario
         throw new IllegalArgumentException("La data dell'evento non può essere una data nel passato.");
         }
@@ -101,7 +115,7 @@ public class Evento {
 
         if (numeroPostiPrenotati<=0){
             // Messaggio di allert in caso contrario
-            throw new IllegalArgumentException("Il numero di posti totali non è valido.");    
+            throw new IllegalArgumentException("Non hai prenotazioni da disdire");    
         }
         // Rimuovo un posto
         numeroPostiPrenotati--; 
