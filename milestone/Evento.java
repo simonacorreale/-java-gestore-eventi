@@ -1,6 +1,7 @@
-package milestone;
+
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /* Step 1
 Creare una classe Evento che abbia le seguenti proprietà:
@@ -45,7 +46,7 @@ public class Evento {
     // mi assicuro che nel controllare se sono stati inseriti posti
         if (numeroPostiPrenotati<=0){
             throw new IllegalArgumentException("Il numero di posti totali non è valido.");  
-        } */
+    } */
 
         this.titolo = titolo;
         this.data = data;
@@ -53,19 +54,46 @@ public class Evento {
         this.postiPrenotati = 0;
 
     }
+    // Getter titolo
+    public String getTitolo() {
+        return titolo;
+    }
 
+    // Getter data
+    public LocalDate getData() {
+        return data;
+    }
+
+    // Getter posti totali
     public int getPostiTotali() {
         return postiTotali;
     }
-    
+
+    // Getter posti prenotati
     public int getPostiPrenotati() {
         return postiPrenotati;
     }
-    
+
+    // Setter
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
+    }
+    // Setter
     public void setData(LocalDate data) {
        
-        
     }
 
-
+    // Metodi per la prenotazione e disdetta
+    public void prenota() {
+       
+    }
+    public void disdici() {
+       
+    }
+    
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString();
+    }
 }
