@@ -20,13 +20,13 @@ Aggiungere metodi getter e setter in modo che:
 titolo sia in lettura e in scrittura✅
 data sia in lettura e scrittura✅
 numero di posti totale sia solo in lettura✅
-numero di posti prenotati sia solo in lettura
+numero di posti prenotati sia solo in lettura✅
 
-Vanno inoltre implementati dei metodi public che svolgono le seguenti funzioni:
-prenota: aggiunge uno ai posti prenotati. Se l’evento è già passato o non ha posti disponibili deve restituire un’eccezione.
-disdici: riduce di uno i posti prenotati. Se l’evento è già passato o non ci sono prenotazioni restituisce un’eccezione.
-l’override del metodo toString() in modo che venga restituita una stringa contenente: data formattata - titolo
-Aggiungete eventuali metodi (public e private) che vi aiutino a svolgere le funzioni richieste.
+Vanno inoltre implementati dei metodi public che svolgono le seguenti funzioni:✅
+prenota: aggiunge uno ai posti prenotati. Se l’evento è già passato o non ha posti disponibili deve restituire un’eccezione.✅
+disdici: riduce di uno i posti prenotati. Se l’evento è già passato o non ci sono prenotazioni restituisce un’eccezione.✅
+l’override del metodo toString() in modo che venga restituita una stringa contenente: data formattata - titolo✅
+Aggiungete eventuali metodi (public e private) che vi aiutino a svolgere le funzioni richieste.< pending comprensione possibile altro utilizzo
  */
 
 public class Evento {
