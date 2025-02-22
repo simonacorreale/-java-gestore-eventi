@@ -1,3 +1,6 @@
+
+import java.time.LocalDate;
+
 /* Step 1
 Creare una classe Evento che abbia le seguenti proprietà:
 titolo
@@ -27,8 +30,41 @@ public class Evento {
     private int numeroPostiPrenotati;
 
     // costruttore
-    public Evento() {
-        
+    public Evento(String titolo, LocalDate data, int postiTotali) {
+
+    // non sono sicura debba essere inserito qui lo lascio un secondo commentato
+
+    /* // nel momento in cui inizzializzo le varie istanze controllo se la data è la data corrente
+        if(data.isBefore(LocalDate.now())){
+    // messaggio di allert in caso contrario
+        throw new IllegalArgumentException("La data dell'evento non può essere una data nel passato.");
+        }
+    */
+    /* 
+    // mi assicuro che nel controllare se sono stati inseriti posti
+        if (numeroPostiPrenotati<=0){
+            throw new IllegalArgumentException("Il numero di posti totali non è valido.");  
+        } */
+
+        this.titolo = titolo;
+        this.data = data;
+        this.postiTotali = postiTotali;
+        this.postiPrenotati = 0;
+
+    }
+
+    public int getPostiTotali() {
+        return postiTotali;
     }
     
+    public int getPostiPrenotati() {
+        return postiPrenotati;
+    }
+    
+    public void setData(LocalDate data) {
+       
+        
+    }
+
+
 }
