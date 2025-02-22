@@ -28,30 +28,23 @@ public class Evento {
 
     private String titolo;
     private LocalDate data;
+    private int numeroPostiPrenotati = 0;
     private final int numeroPostiTotali;
-    private int numeroPostiPrenotati;
+    
 
     // costruttore
-    public Evento(String titolo, LocalDate data, int postiTotali) {
+    public Evento(String titolo, LocalDate data, int numeroPostiTotali) {
 
-    // non sono sicura debba essere inserito qui lo lascio un secondo commentato
-
-    /* // nel momento in cui inizzializzo le varie istanze controllo se la data è la data corrente
-        if(data.isBefore(LocalDate.now())){
-    // messaggio di allert in caso contrario
-        throw new IllegalArgumentException("La data dell'evento non può essere una data nel passato.");
+        if (data.isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("La data dell'evento non può essere nel passato.");
         }
-    */
-    /* 
-    // mi assicuro che nel controllare se sono stati inseriti posti
-        if (numeroPostiPrenotati<=0){
-            throw new IllegalArgumentException("Il numero di posti totali non è valido.");  
-    } */
-
+        {
+            throw new IllegalArgumentException("Il numero di posti totali deve essere positivo.");
+        }
         this.titolo = titolo;
         this.data = data;
-        this.postiTotali = postiTotali;
-        this.postiPrenotati = 0;
+        this.numeroPostiTotali = numeroPostiTotali;
+        
 
     }
     // Getter titolo
@@ -66,12 +59,7 @@ public class Evento {
 
     // Getter posti totali
     public int getPostiTotali() {
-        return postiTotali;
-    }
-
-    // Getter posti prenotati
-    public int getPostiPrenotati() {
-        return postiPrenotati;
+        return numeroPostiTotali;
     }
 
     // Setter
@@ -84,16 +72,41 @@ public class Evento {
     }
 
     // Metodi per la prenotazione e disdetta
-    public void prenota() {
-       
+    public void prenota(LocalDate nuovadata) {
+
+        if(nuovadata.isBefore(LocalDate.now())){
+        // messaggio di allert in caso contrario
+        throw new IllegalArgumentException("La data dell'evento non può essere una data nel passato.");
+        }
+        
+        if (numeroPostiPrenotati >= numeroPostiTotali) {
+            throw new IllegalArgumentException("Non ci sono posti disponibili");
+        } 
+        // aggiungo un posto
+        numeroPostiPrenotati++;
+
     }
+
     public void disdici() {
-       
+
+        if(data.isBefore(LocalDate.now())){
+            // messaggio di allert in caso contrario
+            throw new IllegalArgumentException("La data dell'evento non può essere una data nel passato.");
+            }
+
+        if (numeroPostiPrenotati<=0){
+            // messaggio di allert in caso contrario
+            throw new IllegalArgumentException("Il numero di posti totali non è valido.");    
     }
+        // rimuovo un posto
+        numeroPostiPrenotati++; 
+}
     
     @Override
     public String toString() {
         // TODO Auto-generated method stub
         return super.toString();
     }
+
+    
 }
