@@ -35,10 +35,13 @@ public class Evento {
     // costruttore
     public Evento(String titolo, LocalDate data, int numeroPostiTotali) {
 
+        // Verifica che la data non sia nel passato
         if (data.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("La data dell'evento non può essere nel passato.");
         }
-        {
+        
+        // Verifica che il numero di posti totali sia positivo
+        if (numeroPostiTotali <= 0) {
             throw new IllegalArgumentException("Il numero di posti totali deve essere positivo.");
         }
         this.titolo = titolo;
@@ -95,17 +98,18 @@ public class Evento {
             }
 
         if (numeroPostiPrenotati<=0){
-            // messaggio di allert in caso contrario
+            // Messaggio di allert in caso contrario
             throw new IllegalArgumentException("Il numero di posti totali non è valido.");    
-    }
-        // rimuovo un posto
+        }
+        // Rimuovo un posto
         numeroPostiPrenotati--; 
 }
     
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+    // Metodo java incorporsto in java documentazione oracle https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html -> Formattatore DateTimeFormatter = DateTimeFormatter.ofPattern("aaaa MM gg");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return "Evento: " + titolo + ", Data: " + data.format(formatter);
     }
 
     
