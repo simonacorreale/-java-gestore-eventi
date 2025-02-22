@@ -1,5 +1,3 @@
-
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -82,7 +80,7 @@ public class Evento {
 
         if (data.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("Non puoi impostare una data passata");
-        };
+        }
         
         this.data = data;
 
