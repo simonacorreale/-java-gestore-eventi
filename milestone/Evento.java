@@ -31,8 +31,8 @@ public class Evento {
 
     private String titolo;
     private LocalDate data;
-    private int numeroPostiPrenotati;
-    private final int numeroPostiTotali;
+    private int numeroPostiPrenotati = 0;
+    private int numeroPostiTotali;
 
     // Costruttore
     public Evento(String titolo, LocalDate data, int numeroPostiTotali) {
@@ -41,7 +41,7 @@ public class Evento {
         if (data.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("La data dell'evento non può essere nel passato.");
         }
-        
+
         // Verifica che il numero di posti totali sia positivo
         if (numeroPostiTotali <= 0) {
             throw new IllegalArgumentException("Il numero di posti totali deve essere positivo.");
@@ -49,13 +49,13 @@ public class Evento {
         this.titolo = titolo;
         this.data = data;
         this.numeroPostiTotali = numeroPostiTotali;
-        this.numeroPostiPrenotati = 0;
-
     }
+
     // Getter titolo
     public String getTitolo() {
         return titolo;
     }
+
     // Setter titolo
     public void setTitolo(String titolo) {
         this.titolo = titolo;
@@ -63,68 +63,75 @@ public class Evento {
 
     // Getter posti totali
     public int getPostiTotali() {
-    return numeroPostiTotali;
+        return numeroPostiTotali;
     }
 
     // Getter posti prenotati
-    public int getPostiPrenotati(){
+    public int getPostiPrenotati() {
         return numeroPostiPrenotati;
     };
-    
+
     // Getter data
     public LocalDate getData() {
         return data;
     }
+
     // Setter data
     public void setData(LocalDate data) {
 
-        if (data.isBefore(LocalDate.now())) {
-            throw new IllegalArgumentException("Non puoi impostare una data passata");
-        }
-        
         this.data = data;
-
     }
 
     // Metodi per la prenotazione e disdetta
-    public void prenota() {
+    public void prenota() throws Exception {
 
-        if(data.isBefore(LocalDate.now())){
-        // Messaggio di allert in caso contrario
-        throw new IllegalArgumentException("La data dell'evento non può essere una data nel passato.");
+        if (LocalDate.now().isBefore(data) || LocalDate.now().isEqual(data)) {
+
+            if (numeroPostiPrenotati < numeroPostiTotali) {
+
+                // Aggiungo un posto
+                numeroPostiPrenotati++;
+
+            } else {
+                // Messaggio di allert in caso di posti non disponibili
+                throw new Exception("Non ci sono posti disponibili");
+            }
+
+        } else {
+
+            // Messaggio di allert in caso contrario
+            throw new Exception("Non puoi prenotare per eventi passati.");
         }
-
-        // Messaggio di allert in caso di posti non disponibili
-        if (numeroPostiPrenotati >= numeroPostiTotali) {
-            throw new IllegalArgumentException("Non ci sono posti disponibili");
-        } 
-
-        // Aggiungo un posto
-        numeroPostiPrenotati++;
 
     }
 
-    public void disdici() {
+    public void disdici() throws Exception {
 
-        if(data.isBefore(LocalDate.now())){
-            // messaggio di allert in caso contrario
-            throw new IllegalArgumentException("La data dell'evento non può essere una data nel passato.");
+        if (LocalDate.now().isAfter(data)) {
+
+            if (numeroPostiPrenotati != 0) {
+                // Rimuovi un posto
+                numeroPostiPrenotati--;
+
+            } else {
+                // Messaggio di alert prenotazione non effettuata
+                throw new Exception("Devi prima aver effettuanto una prenotazione");
+
             }
 
-        if (numeroPostiPrenotati<=0){
-            // Messaggio di allert in caso contrario
-            throw new IllegalArgumentException("Non hai prenotazioni da disdire");    
+        } else {
+            // Messaggio di alert eventi passati
+            throw new Exception("Non puoi prenotare per eventi passati.");
+
         }
-        // Rimuovo un posto
-        numeroPostiPrenotati--; 
-}
-    
+
+    }
+
     @Override
     public String toString() {
-    // Metodo java incorporato in java documentazione oracle https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html -> Formattatore DateTimeFormatter = DateTimeFormatter.ofPattern("aaaa MM gg");
+        // Metodo java incorporato in java documentazione oracle
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return "Evento: " + titolo + ", Data: " + data.format(formatter);
     }
 
-    
 }
