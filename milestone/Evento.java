@@ -30,9 +30,8 @@ public class Evento {
     private LocalDate data;
     private int numeroPostiPrenotati = 0;
     private final int numeroPostiTotali;
-    
 
-    // costruttore
+    // Costruttore
     public Evento(String titolo, LocalDate data, int numeroPostiTotali) {
 
         // Verifica che la data non sia nel passato
@@ -47,7 +46,6 @@ public class Evento {
         this.titolo = titolo;
         this.data = data;
         this.numeroPostiTotali = numeroPostiTotali;
-        
 
     }
     // Getter titolo
@@ -71,6 +69,8 @@ public class Evento {
     }
     // Setter
     public void setData(LocalDate data) {
+
+        this.data = data;
        
     }
 
@@ -86,7 +86,7 @@ public class Evento {
         if (numeroPostiPrenotati >= numeroPostiTotali) {
             throw new IllegalArgumentException("Non ci sono posti disponibili");
         } 
-        
+
         // Aggiungo un posto
         numeroPostiPrenotati++;
 
