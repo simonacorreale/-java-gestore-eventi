@@ -35,8 +35,7 @@ public class MainTest {
             System.out.println("---------------------------------------------------");
             System.out.println("Inserisci la data dell'evento (formato YYYY-MM-DD): ");
 
-            String dataEvento = scanner.nextLine();
-            LocalDate data = LocalDate.parse(dataEvento, DateTimeFormatter.BASIC_ISO_DATE);
+            // Devo ragionare come far inserire la data all'italiana
 
             System.out.println("---------------------------------------------------");
             System.out.println("Inserisci il numero totale di posti disponibili: ");
