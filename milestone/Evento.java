@@ -82,10 +82,6 @@ public class Evento {
         this.data = data;
     }
 
-    // Metodo per gestire gli errori
-    private void gestisciErrore(String messaggioErrore) {
-        throw new RuntimeException(messaggioErrore);
-    }
     // Metodi per la prenotazione e disdetta
 
     public void prenota() {
@@ -99,13 +95,13 @@ public class Evento {
 
             } else {
                 // Messaggio di alert in caso di posti non disponibili
-                gestisciErrore("Non ci sono posti disponibili");
+                throw new RuntimeException("Non ci sono posti disponibili");
             }
 
         } else {
 
             // Messaggio di alert in caso contrario
-            gestisciErrore("Non puoi prenotare per eventi passati.");
+            throw new RuntimeException("Non puoi prenotare per eventi passati.");
         }
 
     }
@@ -120,14 +116,14 @@ public class Evento {
 
             } else {
                 // Messaggio di alert prenotazione non effettuata
-                gestisciErrore("Devi prima aver effettuato una prenotazione");
+                throw new RuntimeException("Devi prima aver effettuato una prenotazione");
 
             }
 
         } else {
 
             // Messaggio di alert eventi passati
-            gestisciErrore("Devi prima aver effettuato una prenotazione");
+            throw new RuntimeException("Devi prima aver effettuato una prenotazione");
 
         }
 
