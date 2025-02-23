@@ -143,9 +143,7 @@ public class Evento {
         // Classe java incorporato di ora + to string per restituire correttamente i
         // parametri al main sottoforma di stringa
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return "Evento: " + titolo + " \nData: " + data.format(formatter) + " | "
-                + numeroPostiPrenotati
-                + " / " + numeroPostiTotali;
+        return "Evento: " + titolo + " \nData: " + data.format(formatter);
     }
 
 }

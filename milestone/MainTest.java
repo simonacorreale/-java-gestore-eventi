@@ -1,5 +1,6 @@
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /* 
@@ -27,16 +28,31 @@ public class MainTest {
         try {
             Scanner scanner = new Scanner(System.in);
 
-            Evento tirtySecondsToMarse = new Evento("Tirty Seconds to mars on Toru", LocalDate.now(), 200);
             System.out.println("---------------------------------------------------");
-            System.out.println(tirtySecondsToMarse);
-            System.out.println("---------------------------------------------------");
-            System.out.println("Inserisci il numero di posti da prenotare");
+            System.out.println("Inserisci il titolo dell'evento: ");
+            String titolo = scanner.nextLine();
 
-            scanner.close();
+            System.out.println("---------------------------------------------------");
+            System.out.println("Inserisci la data dell'evento (formato YYYY-MM-DD): ");
+
+            String dataEvento = scanner.nextLine();
+            LocalDate data = LocalDate.parse(dataEvento, DateTimeFormatter.BASIC_ISO_DATE);
+
+            System.out.println("---------------------------------------------------");
+            System.out.println("Inserisci il numero totale di posti disponibili: ");
+
+            // Devo ragionare su questa parte
+
+            // Parametri inseriti
+            Evento concertoMetal = new Evento(titolo, data, 0);
+            System.out.println("---------------------------------------------------");
+            System.out.println(concertoMetal);
+            System.out.println("---------------------------------------------------");
 
         } catch (Exception e) {
-
+            // Devo ragionare su questa parte
+        } finally {
+            scanner.close();
         }
 
     }
