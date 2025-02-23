@@ -27,11 +27,11 @@ public class MainTest {
         try {
             Scanner scanner = new Scanner(System.in);
 
-            Evento tirtySecondsToMarse = new Evento("Tirty Seconds to mars on toru", LocalDate.now(), 200);
-
+            Evento tirtySecondsToMarse = new Evento("Tirty Seconds to mars on Toru", LocalDate.now(), 200);
+            System.out.println("---------------------------------------------------");
             System.out.println(tirtySecondsToMarse);
-
-            // da ragionare
+            System.out.println("---------------------------------------------------");
+            System.out.println("Inserisci il numero di posti da prenotare");
 
             scanner.close();
 

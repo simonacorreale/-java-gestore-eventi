@@ -83,7 +83,7 @@ public class Evento {
         this.data = data;
     }
 
-    // Metodi per la prenotazione e disdetta
+    // Metodi metodo per gestire le varie eccezioni
     private void eccezioniSpeciali(String errore) throws Exception {
 
         throw new Exception(errore);
@@ -143,7 +143,8 @@ public class Evento {
         // Classe java incorporato di ora + to string per restituire correttamente i
         // parametri al main sottoforma di stringa
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return "Evento: " + titolo + ", Data: " + data.format(formatter) + ", Posti prenotati: " + numeroPostiPrenotati
+        return "Evento: " + titolo + " \nData: " + data.format(formatter) + " | "
+                + numeroPostiPrenotati
                 + " / " + numeroPostiTotali;
     }
 
