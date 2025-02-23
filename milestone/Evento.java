@@ -38,6 +38,7 @@ public class Evento {
     public Evento(String titolo, LocalDate data, int numeroPostiTotali) {
 
         // Verifica che la data non sia nel passato
+
         if (data.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("La data dell'evento non può essere nel passato.");
         }
@@ -143,7 +144,7 @@ public class Evento {
         // Classe java incorporato di ora + to string per restituire correttamente i
         // parametri al main sottoforma di stringa
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return "Evento: " + titolo + " \nData: " + data.format(formatter);
+        return "Evento: " + titolo + " \nData: " + data.format(formatter) + "|" + numeroPostiTotali;
     }
 
 }

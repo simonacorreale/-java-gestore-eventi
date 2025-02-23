@@ -24,35 +24,63 @@ public class MainTest {
     public static void main(String[] args) {
 
         // Implemento un try catch per effettuare i controlli necessari
+        // titolo data e visualizza numero posti totali
+        // 1 titolo
+        // 2 data
 
-        try {
-            Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-            System.out.println("---------------------------------------------------");
-            System.out.println("Inserisci il titolo dell'evento: ");
-            String titolo = scanner.nextLine();
+        System.out.println("---------------------------------------------------");
+        System.out.println("Inserisci il titolo dell'evento: ");
+        String titolo = scanner.nextLine();
 
-            System.out.println("---------------------------------------------------");
-            System.out.println("Inserisci la data dell'evento (formato YYYY-MM-DD): ");
+        System.out.println("---------------------------------------------------");
+        System.out.println("Inserisci la data dell'evento (formato dd-MM-yyyy): ");
 
-            // Devo ragionare come far inserire la data all'italiana
+        String dateString = scanner.nextLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate data = LocalDate.parse(dateString, formatter);
 
-            System.out.println("---------------------------------------------------");
-            System.out.println("Inserisci il numero totale di posti disponibili: ");
+        // Parametri inseriti
+        Evento concertoMetal = new Evento(titolo, data, 100);
 
-            // Devo ragionare su questa parte
+        System.out.println("---------------------------------------------------");
+        System.out.println(concertoMetal);
+        System.out.println("---------------------------------------------------");
 
-            // Parametri inseriti
-            Evento concertoMetal = new Evento(titolo, data, 0);
-            System.out.println("---------------------------------------------------");
-            System.out.println(concertoMetal);
-            System.out.println("---------------------------------------------------");
+        System.out.println("Vuoi prenotare questo evento?");
 
-        } catch (Exception e) {
-            // Devo ragionare su questa parte
-        } finally {
-            scanner.close();
+        String rispostaCorrente = scanner.nextLine();
+
+        if ("yes".equals(rispostaCorrente)) {
+
+            try {
+
+                concertoMetal.prenota();
+
+            } catch (Exception e) {
+
+                System.out.println(e);
+
+            }
+
+        } else {
+
+            System.out.println(" grazie e buona giornata");
+
         }
+
+        /*
+         * 1) Voglio chiedere all'utente se vuole prenotare
+         * 
+         * 2) SE l'utente da risposta positiva
+         * - accedi alla prenotazione del posto
+         * 
+         * 3) SE l'utente da risposta negativa
+         * - gestisci un errore
+         */
+
+        scanner.close();
 
     }
 }
