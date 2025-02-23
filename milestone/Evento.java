@@ -84,6 +84,13 @@ public class Evento {
     }
 
     // Metodi per la prenotazione e disdetta
+    private void eccezioniSpeciali(String errore) throws Exception {
+
+        throw new Exception(errore);
+
+    }
+
+    // Metodi per la prenotazione e disdetta
 
     public void prenota() throws Exception {
 
@@ -96,13 +103,16 @@ public class Evento {
 
             } else {
                 // Messaggio di alert in caso di posti non disponibili
-                throw new Exception("Non ci sono posti disponibili");
+                eccezioniSpeciali("Non ci sono posti disponibili");
+
             }
 
         } else {
 
             // Messaggio di alert in caso contrario
-            throw new Exception("Non puoi prenotare per eventi passati.");
+
+            eccezioniSpeciali("Non puoi prenotare per eventi passati.");
+
         }
 
     }
@@ -117,24 +127,24 @@ public class Evento {
 
             } else {
                 // Messaggio di alert prenotazione non effettuata
-                throw new Exception("Devi prima aver effettuato una prenotazione");
 
+                eccezioniSpeciali("Devi prima aver effettuato una prenotazione");
             }
 
         } else {
 
             // Messaggio di alert eventi passati
-            throw new Exception("Devi prima aver effettuato una prenotazione");
-
+            eccezioniSpeciali("Non puoi disdire un evento nel passato");
         }
-
     }
 
     @Override
     public String toString() {
-        // Classe java incorporato
+        // Classe java incorporato di ora + to string per restituire correttamente i
+        // parametri al main sottoforma di stringa
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return "Evento: " + titolo + ", Data: " + data.format(formatter);
+        return "Evento: " + titolo + ", Data: " + data.format(formatter) + ", Posti prenotati: " + numeroPostiPrenotati
+                + " / " + numeroPostiTotali;
     }
 
 }
