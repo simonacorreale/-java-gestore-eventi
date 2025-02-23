@@ -1,4 +1,6 @@
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /* 
@@ -20,14 +22,24 @@ Stampare a video il numero di posti prenotati e quelli disponibili
 public class MainTest {
 
     public static void main(String[] args) {
-    //Implemento un try catch per effettuare i controlli necessari (di natura artimetica o di altro tipo)
+         Scanner scanner = new Scanner(System.in);
 
-    try {
+        // Implemento un try catch per effettuare i controlli necessari
 
-    } catch {
+        try {
+            
+            // da ragionare
 
-    } finally {
-        System.out.println("Arrivederci");
-      }
+            }
 
-}
+        }catch(
+
+    RuntimeException e)
+    {
+        // Gestisce le eccezioni lanciate runtime nel metodo raccoglitore
+        System.out.println("Errore: " + e.getMessage());
+    }
+
+    scanner.close();
+
+}}

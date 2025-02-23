@@ -83,12 +83,12 @@ public class Evento {
     }
 
     // Metodo per gestire gli errori
-    private void gestisciErrore(String messaggioErrore) throws Exception {
-        throw new Exception(messaggioErrore);
+    private void gestisciErrore(String messaggioErrore) {
+        throw new RuntimeException(messaggioErrore);
     }
     // Metodi per la prenotazione e disdetta
 
-    public void prenota() throws Exception {
+    public void prenota() {
 
         if (LocalDate.now().isBefore(data) || LocalDate.now().isEqual(data)) {
 
@@ -110,7 +110,7 @@ public class Evento {
 
     }
 
-    public void disdici() throws Exception {
+    public void disdici() {
 
         if (LocalDate.now().isAfter(data)) {
 
@@ -135,7 +135,7 @@ public class Evento {
 
     @Override
     public String toString() {
-        // Metodo java incorporato in java documentazione oracle
+        // Classe java incorporato
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return "Evento: " + titolo + ", Data: " + data.format(formatter);
     }
