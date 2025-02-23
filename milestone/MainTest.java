@@ -52,11 +52,19 @@ public class MainTest {
 
         String rispostaCorrente = scanner.nextLine();
 
-        if ("yes".equals(rispostaCorrente)) {
+        if ("Si".equals(rispostaCorrente)) {
+
+            // Commento per domani - Risolvere questa condizione
+
+            // Debug per il numero di posti prima
+            /* System.out.println(concertoMetal.getPostiPrenotati()); */
 
             try {
 
                 concertoMetal.prenota();
+
+                // Debug per il numero di posti dopo
+                /* System.out.println(concertoMetal.getPostiPrenotati()); */
 
             } catch (Exception e) {
 
