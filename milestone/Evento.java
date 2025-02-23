@@ -46,6 +46,7 @@ public class Evento {
         if (numeroPostiTotali <= 0) {
             throw new IllegalArgumentException("Il numero di posti totali deve essere positivo.");
         }
+
         this.titolo = titolo;
         this.data = data;
         this.numeroPostiTotali = numeroPostiTotali;
@@ -84,7 +85,7 @@ public class Evento {
 
     // Metodi per la prenotazione e disdetta
 
-    public void prenota() {
+    public void prenota() throws Exception {
 
         if (LocalDate.now().isBefore(data) || LocalDate.now().isEqual(data)) {
 
@@ -95,18 +96,18 @@ public class Evento {
 
             } else {
                 // Messaggio di alert in caso di posti non disponibili
-                throw new RuntimeException("Non ci sono posti disponibili");
+                throw new Exception("Non ci sono posti disponibili");
             }
 
         } else {
 
             // Messaggio di alert in caso contrario
-            throw new RuntimeException("Non puoi prenotare per eventi passati.");
+            throw new Exception("Non puoi prenotare per eventi passati.");
         }
 
     }
 
-    public void disdici() {
+    public void disdici() throws Exception {
 
         if (LocalDate.now().isAfter(data)) {
 
@@ -116,14 +117,14 @@ public class Evento {
 
             } else {
                 // Messaggio di alert prenotazione non effettuata
-                throw new RuntimeException("Devi prima aver effettuato una prenotazione");
+                throw new Exception("Devi prima aver effettuato una prenotazione");
 
             }
 
         } else {
 
             // Messaggio di alert eventi passati
-            throw new RuntimeException("Devi prima aver effettuato una prenotazione");
+            throw new Exception("Devi prima aver effettuato una prenotazione");
 
         }
 
