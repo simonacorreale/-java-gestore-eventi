@@ -9,7 +9,6 @@ Aggiungere i metodi per restituire data e ora formattata e prezzo formattato (##
 
  */
 
- 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -25,5 +24,4 @@ public class Concerto extends Evento {
         this.prezzo = prezzo;
     }
 
-    
 }

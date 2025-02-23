@@ -1,4 +1,6 @@
 
+import java.util.Scanner;
+
 /* 
 Step 2
 Creare una classe Main di test, in cui si chiede all’utente di inserire un nuovo evento con tutti i parametri.
@@ -18,7 +20,14 @@ Stampare a video il numero di posti prenotati e quelli disponibili
 public class MainTest {
 
     public static void main(String[] args) {
+    //Implemento un try catch per effettuare i controlli necessari (di natura artimetica o di altro tipo)
 
-    
+    try {
+
+    } catch {
+
+    } finally {
+        System.out.println("Arrivederci");
+      }
 
 }
