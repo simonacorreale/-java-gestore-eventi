@@ -2,6 +2,8 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /* 
 Step 2
@@ -38,55 +40,56 @@ public class MainTest {
         System.out.println("Inserisci la data dell'evento (formato dd-MM-yyyy): ");
 
         String dateString = scanner.nextLine();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate data = LocalDate.parse(dateString, formatter);
 
-        // Parametri inseriti
-        Evento concertoMetal = new Evento(titolo, data, 100);
+        // Regex per il formato "dd-MM-yyyy"
+        String regex = "^([0-2][0-9]|(3)[0-1])-(0[1-9]|1[0-2])-(\\d{4})$";
 
-        System.out.println("---------------------------------------------------");
-        System.out.println(concertoMetal);
-        System.out.println("---------------------------------------------------");
+        // Compilazione della regex
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(dateString);
 
-        System.out.println("Vuoi prenotare questo evento?");
-
-        String rispostaCorrente = scanner.nextLine();
-
-        if ("Si".equals(rispostaCorrente)) {
-
-            // Commento per domani - Risolvere questa condizione
-
-            // Debug per il numero di posti prima
-            /* System.out.println(concertoMetal.getPostiPrenotati()); */
+        if (matcher.matches()) {
 
             try {
 
-                concertoMetal.prenota();
+                // Converte la stringa in LocalDate con il formato "dd-MM-yyyy"
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                LocalDate data = LocalDate.parse(dateString, formatter);
 
-                // Debug per il numero di posti dopo
-                /* System.out.println(concertoMetal.getPostiPrenotati()); */
+                System.out.println("Data valida: " + data);
+                Evento concertoMetal = new Evento(titolo, data, 100);
+
+                // Visualizza l'evento
+                System.out.println("---------------------------------------------------");
+                System.out.println(concertoMetal);
+                System.out.println("---------------------------------------------------");
+
+                System.out.println("Vuoi prenotare questo evento?(si/no)");
+
+                String rispostaCorrente = scanner.nextLine();
+
+                // Debug per il numero di posti prima
+                System.out.println(concertoMetal.getPostiPrenotati());
+                if ("si".equals(rispostaCorrente)) {
+
+                    // Commento per domani - Risolvere questa condizione
+
+                    concertoMetal.prenota();
+
+                    // Debug per il numero di posti dopo
+                    System.out.println(concertoMetal.getPostiPrenotati());
+
+                } else {
+                    // casistica del no
+                    System.out.println(" grazie e buona giornata");
+                }
 
             } catch (Exception e) {
-
-                System.out.println(e);
-
+                System.out.println("Data non valida. Assicurati che la data esista veramente.");
             }
-
         } else {
-
-            System.out.println(" grazie e buona giornata");
-
+            System.out.println("Errore: Formato data non valido. Usa il formato dd-MM-yyyy.");
         }
-
-        /*
-         * 1) Voglio chiedere all'utente se vuole prenotare
-         * 
-         * 2) SE l'utente da risposta positiva
-         * - accedi alla prenotazione del posto
-         * 
-         * 3) SE l'utente da risposta negativa
-         * - gestisci un errore
-         */
 
         scanner.close();
 
