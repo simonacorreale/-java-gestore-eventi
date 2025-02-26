@@ -74,6 +74,7 @@ public class MainTest {
                     System.out.println("3. Uscire");
 
                     // Conferma prenotazione
+
                     System.out.print("Scelta: ");
                     String scelta = scanner.nextLine();
 
@@ -102,6 +103,7 @@ public class MainTest {
                             System.out.print("Quanti posti vuoi disdire? ");
                             int postiDaRimuovere = scanner.nextInt();
                             scanner.nextLine();
+
                             try {
                                 concertoMetal.disdici(postiDaRimuovere);
                                 // Rimozione
@@ -114,6 +116,7 @@ public class MainTest {
                             }
                         }
                         case "3" -> {
+
                             // Uscita
 
                             System.out.println("Grazie e buona giornata!");
