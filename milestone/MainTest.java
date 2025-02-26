@@ -9,9 +9,9 @@ import java.util.regex.Pattern;
 Step 2
 Creare una classe Main di test, in cui si chiede all’utente di inserire un nuovo evento con tutti i parametri.✅
 
-Dopo che l’evento è stato istanziato, chiedere all’utente se e quante prenotazioni vuole fare e provare ad effettuarle, implementando opportuni controlli
+Dopo che l’evento è stato istanziato, chiedere all’utente se e quante prenotazioni vuole fare e provare ad effettuarle, implementando opportuni controlli✅
 
-Stampare a video il numero di posti prenotati e quelli disponibili
+Stampare a video il numero di posti prenotati e quelli disponibili✅
 
 Chiedere all’utente se e quanti posti vuole disdire
 
@@ -75,7 +75,7 @@ public class MainTest {
                     String scelta = scanner.nextLine();
 
                     switch (scelta) {
-                        case "1":
+                        case "1" -> {
                             // Posti da prenotare
 
                             System.out.print("Quanti posti vuoi prenotare? ");
@@ -90,8 +90,9 @@ public class MainTest {
                             } catch (Exception e) {
                                 System.out.println("Errore: " + e.getMessage());
                             }
-                            break;
-                        case "2":
+                        }
+                        case "2" -> {
+
                             // Cancellazione posti
 
                             System.out.print("Quanti posti vuoi disdire? ");
@@ -107,15 +108,13 @@ public class MainTest {
                             } catch (Exception e) {
                                 System.out.println("Errore: " + e.getMessage());
                             }
-                            break;
-                        case "3":
+                        }
+                        case "3" -> {
                             // Uscita
                             System.out.println("Grazie e buona giornata!");
                             continua = false;
-                            break;
-                        default:
-                            System.out.println("Scelta non valida. Riprova.");
-                            break;
+                        }
+                        default -> System.out.println("Scelta non valida. Riprova.");
                     }
                 }
 
