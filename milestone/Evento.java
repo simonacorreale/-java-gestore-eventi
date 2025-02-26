@@ -93,49 +93,36 @@ public class Evento {
 
     // Metodi per la prenotazione e disdetta
 
-    public void prenota() throws Exception {
-
+    public void prenota(int postiRichiesti) throws Exception {
         if (LocalDate.now().isBefore(data) || LocalDate.now().isEqual(data)) {
+            if (numeroPostiPrenotati + postiRichiesti <= numeroPostiTotali) {
+                numeroPostiPrenotati += postiRichiesti;
 
-            if (numeroPostiPrenotati < numeroPostiTotali) {
-
-                // Aggiungo un posto
-                numeroPostiPrenotati++;
+                System.out.println("Prenotazione confermata. Posti prenotati: " + numeroPostiPrenotati);
 
             } else {
-                // Messaggio di alert in caso di posti non disponibili
-                eccezioniSpeciali("Non ci sono posti disponibili");
-
+                eccezioniSpeciali("Non ci sono abbastanza posti disponibili. Posti rimasti: "
+                        + (numeroPostiTotali - numeroPostiPrenotati));
             }
-
         } else {
-
-            // Messaggio di alert in caso contrario
-
             eccezioniSpeciali("Non puoi prenotare per eventi passati.");
-
         }
-
     }
 
-    public void disdici() throws Exception {
-
+    public void disdici(int postiDaRimuovere) throws Exception {
         if (LocalDate.now().isAfter(data)) {
 
-            if (numeroPostiPrenotati != 0) {
-                // Rimuovi un posto
-                numeroPostiPrenotati--;
+            if (numeroPostiPrenotati >= postiDaRimuovere) {
+                numeroPostiPrenotati -= postiDaRimuovere;
+
+                System.out.println("Cancellazione confermata. Posti prenotati rimanenti: " + numeroPostiPrenotati);
 
             } else {
-                // Messaggio di alert prenotazione non effettuata
-
-                eccezioniSpeciali("Devi prima aver effettuato una prenotazione");
+                eccezioniSpeciali("Non puoi cancellare più posti di quelli prenotati. Posti prenotati attuali: "
+                        + numeroPostiPrenotati);
             }
-
         } else {
-
-            // Messaggio di alert eventi passati
-            eccezioniSpeciali("Non puoi disdire un evento nel passato");
+            eccezioniSpeciali("Non puoi disdire questa prenotazione");
         }
     }
 

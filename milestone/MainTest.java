@@ -49,14 +49,12 @@ public class MainTest {
         Matcher matcher = pattern.matcher(dateString);
 
         if (matcher.matches()) {
-
             try {
-
                 // Converte la stringa in LocalDate con il formato "dd-MM-yyyy"
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 LocalDate data = LocalDate.parse(dateString, formatter);
 
-                System.out.println("Data valida: " + data);
+                // Creazione evento con 100 posti disponibili
                 Evento concertoMetal = new Evento(titolo, data, 100);
 
                 // Visualizza l'evento
@@ -64,33 +62,66 @@ public class MainTest {
                 System.out.println(concertoMetal);
                 System.out.println("---------------------------------------------------");
 
-                System.out.println("Vuoi prenotare questo evento?(si/no)");
+                boolean continua = true;
 
-                String rispostaCorrente = scanner.nextLine();
+                while (continua) {
+                    // Scelta opzione
+                    System.out.println("Cosa vuoi fare?");
+                    System.out.println("1. Prenotare posti");
+                    System.out.println("2. Disdire prenotazioni");
+                    System.out.println("3. Uscire");
 
-                // Debug per il numero di posti prima
-                System.out.println(concertoMetal.getPostiPrenotati());
-                if ("si".equals(rispostaCorrente)) {
+                    System.out.print("Scelta: ");
+                    String scelta = scanner.nextLine();
 
-                    // Commento per domani - Risolvere questa condizione
+                    if (scelta.equals("1")) {
+                        System.out.print("Quanti posti vuoi prenotare? ");
+                        int postiRichiesti = scanner.nextInt();
+                        scanner.nextLine(); // Consuma il newline
 
-                    concertoMetal.prenota();
+                        try {
+                            concertoMetal.prenota(postiRichiesti);
+                            // Successo
+                            System.out.println("Posti prenotati con successo! Posti attuali: "
+                                    + concertoMetal.getPostiPrenotati());
 
-                    // Debug per il numero di posti dopo
-                    System.out.println(concertoMetal.getPostiPrenotati());
+                        } catch (Exception e) {
+                            System.out.println("Errore: " + e.getMessage());
+                        }
 
-                } else {
-                    // casistica del no
-                    System.out.println(" grazie e buona giornata");
+                    } else if (scelta.equals("2")) { // Cancellazione posti
+
+                        System.out.print("Quanti posti vuoi disdire? ");
+
+                        int postiDaRimuovere = scanner.nextInt();
+
+                        scanner.nextLine();
+
+                        try {
+                            concertoMetal.disdici(postiDaRimuovere);
+                            // Rimozione
+                            System.out.println(
+                                    "Prenotazioni annullate! Posti rimanenti: " + concertoMetal.getPostiPrenotati());
+
+                        } catch (Exception e) {
+                            System.out.println("Errore: " + e.getMessage());
+                        }
+
+                    } else if (scelta.equals("3")) { // Uscita
+                        System.out.println("Grazie e buona giornata!");
+                        continua = false;
+
+                    } else {
+                        System.out.println("Scelta non valida. Riprova.");
+                    }
                 }
 
             } catch (Exception e) {
-                System.out.println("Data non valida. Assicurati che la data esista veramente.");
+                System.out.println("Errore: Non è possibile gestire l'evento. " + e.getMessage());
             }
         } else {
             System.out.println("Errore: Formato data non valido. Usa il formato dd-MM-yyyy.");
         }
-
         scanner.close();
 
     }
