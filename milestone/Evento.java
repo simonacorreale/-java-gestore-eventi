@@ -105,7 +105,7 @@ public class Evento {
                         + (numeroPostiTotali - numeroPostiPrenotati));
             }
         } else {
-            eccezioniSpeciali("Non puoi prenotare per eventi passati.");
+            eccezioniSpeciali("Non puoi prenotare per questa prenotazione");
         }
     }
 

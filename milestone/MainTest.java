@@ -74,45 +74,48 @@ public class MainTest {
                     System.out.print("Scelta: ");
                     String scelta = scanner.nextLine();
 
-                    if (scelta.equals("1")) {
-                        System.out.print("Quanti posti vuoi prenotare? ");
-                        int postiRichiesti = scanner.nextInt();
-                        scanner.nextLine(); // Consuma il newline
+                    switch (scelta) {
+                        case "1":
+                            // Posti da prenotare
 
-                        try {
-                            concertoMetal.prenota(postiRichiesti);
-                            // Successo
-                            System.out.println("Posti prenotati con successo! Posti attuali: "
-                                    + concertoMetal.getPostiPrenotati());
+                            System.out.print("Quanti posti vuoi prenotare? ");
+                            int postiRichiesti = scanner.nextInt();
+                            scanner.nextLine(); // Consuma il newline
+                            try {
+                                concertoMetal.prenota(postiRichiesti);
 
-                        } catch (Exception e) {
-                            System.out.println("Errore: " + e.getMessage());
-                        }
+                                System.out.println("Posti prenotati con successo! Posti attuali: "
+                                        + concertoMetal.getPostiPrenotati());
 
-                    } else if (scelta.equals("2")) { // Cancellazione posti
+                            } catch (Exception e) {
+                                System.out.println("Errore: " + e.getMessage());
+                            }
+                            break;
+                        case "2":
+                            // Cancellazione posti
 
-                        System.out.print("Quanti posti vuoi disdire? ");
+                            System.out.print("Quanti posti vuoi disdire? ");
+                            int postiDaRimuovere = scanner.nextInt();
+                            scanner.nextLine();
+                            try {
+                                concertoMetal.disdici(postiDaRimuovere);
+                                // Rimozione
+                                System.out.println(
+                                        "Prenotazioni annullate! Posti rimanenti: "
+                                                + concertoMetal.getPostiPrenotati());
 
-                        int postiDaRimuovere = scanner.nextInt();
-
-                        scanner.nextLine();
-
-                        try {
-                            concertoMetal.disdici(postiDaRimuovere);
-                            // Rimozione
-                            System.out.println(
-                                    "Prenotazioni annullate! Posti rimanenti: " + concertoMetal.getPostiPrenotati());
-
-                        } catch (Exception e) {
-                            System.out.println("Errore: " + e.getMessage());
-                        }
-
-                    } else if (scelta.equals("3")) { // Uscita
-                        System.out.println("Grazie e buona giornata!");
-                        continua = false;
-
-                    } else {
-                        System.out.println("Scelta non valida. Riprova.");
+                            } catch (Exception e) {
+                                System.out.println("Errore: " + e.getMessage());
+                            }
+                            break;
+                        case "3":
+                            // Uscita
+                            System.out.println("Grazie e buona giornata!");
+                            continua = false;
+                            break;
+                        default:
+                            System.out.println("Scelta non valida. Riprova.");
+                            break;
                     }
                 }
 
