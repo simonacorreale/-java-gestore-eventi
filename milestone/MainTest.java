@@ -79,6 +79,7 @@ public class MainTest {
                     String scelta = scanner.nextLine();
 
                     switch (scelta) {
+
                         case "1" -> {
 
                             // Posti da prenotare
@@ -87,6 +88,9 @@ public class MainTest {
                             int postiRichiesti = scanner.nextInt();
                             scanner.nextLine();
                             try {
+
+                                // suppondo si debba trovare una condizione per salvare i dati nella variabile e
+                                // aggiungerli se vuota
                                 concertoMetal.prenota(postiRichiesti);
 
                                 System.out.println("Posti prenotati con successo! Posti attuali: "
@@ -105,6 +109,10 @@ public class MainTest {
                             scanner.nextLine();
 
                             try {
+
+                                // suppondo si debba trovare una condizione per salvare i dati nella variabile e
+                                // rimuoverli se piena
+
                                 concertoMetal.disdici(postiDaRimuovere);
                                 // Rimozione
                                 System.out.println(
