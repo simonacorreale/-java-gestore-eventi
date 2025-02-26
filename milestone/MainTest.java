@@ -86,7 +86,9 @@ public class MainTest {
 
                             System.out.print("Quanti posti vuoi prenotare? ");
                             int postiRichiesti = scanner.nextInt();
+
                             scanner.nextLine();
+
                             try {
 
                                 // suppondo si debba trovare una condizione per salvare i dati nella variabile e
@@ -97,7 +99,7 @@ public class MainTest {
                                         + concertoMetal.getPostiPrenotati());
 
                             } catch (Exception e) {
-                                System.out.println("Errore: " + e.getMessage());
+                                System.out.println("Errore: " + e.getMessage()); // controllare bug su questo elemento
                             }
                         }
                         case "2" -> {

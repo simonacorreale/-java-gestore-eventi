@@ -96,11 +96,13 @@ public class Evento {
     public void prenota(int postiRichiesti) throws Exception {
         if (LocalDate.now().isBefore(data) || LocalDate.now().isEqual(data)) {
             if (numeroPostiPrenotati + postiRichiesti <= numeroPostiTotali) {
+
                 numeroPostiPrenotati += postiRichiesti;
 
                 System.out.println("Prenotazione confermata. Posti prenotati: " + numeroPostiPrenotati);
 
             } else {
+
                 eccezioniSpeciali("Non ci sono abbastanza posti disponibili. Posti rimasti: "
                         + (numeroPostiTotali - numeroPostiPrenotati));
             }
@@ -110,12 +112,14 @@ public class Evento {
     }
 
     public void disdici(int postiDaRimuovere) throws Exception {
-        if (LocalDate.now().isAfter(data)) {
+        if (LocalDate.now().isBefore(data)) {
 
             if (numeroPostiPrenotati >= postiDaRimuovere) {
+
                 numeroPostiPrenotati -= postiDaRimuovere;
 
                 System.out.println("Cancellazione confermata. Posti prenotati rimanenti: " + numeroPostiPrenotati);
+                // forse devo inserire la conferma di quanti ne ha cancellati
 
             } else {
                 eccezioniSpeciali("Non puoi cancellare più posti di quelli prenotati. Posti prenotati attuali: "
