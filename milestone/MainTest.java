@@ -65,22 +65,26 @@ public class MainTest {
                 boolean continua = true;
 
                 while (continua) {
+
                     // Scelta opzione
+
                     System.out.println("Cosa vuoi fare?");
                     System.out.println("1. Prenotare posti");
                     System.out.println("2. Disdire prenotazioni");
                     System.out.println("3. Uscire");
 
+                    // Conferma prenotazione
                     System.out.print("Scelta: ");
                     String scelta = scanner.nextLine();
 
                     switch (scelta) {
                         case "1" -> {
+
                             // Posti da prenotare
 
                             System.out.print("Quanti posti vuoi prenotare? ");
                             int postiRichiesti = scanner.nextInt();
-                            scanner.nextLine(); // Consuma il newline
+                            scanner.nextLine();
                             try {
                                 concertoMetal.prenota(postiRichiesti);
 
@@ -111,6 +115,7 @@ public class MainTest {
                         }
                         case "3" -> {
                             // Uscita
+
                             System.out.println("Grazie e buona giornata!");
                             continua = false;
                         }
