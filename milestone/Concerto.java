@@ -11,17 +11,41 @@ Aggiungere i metodi per restituire data e ora formattata e prezzo formattato (##
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Concerto extends Evento {
 
-    private LocalTime ora;
-    private double prezzo;
+    private final LocalTime ora;
+    private double prezzo = 230;
+    private double prezzototale = 0;
 
     // Costruttore per Concerto
-    public Concerto(String titolo, LocalDate data, int numeroPostiTotali) {
+    public Concerto(String titolo, LocalDate data, int numeroPostiTotali, double prezzo, LocalTime ora,
+            double prezzototale) {
         super(titolo, data, numeroPostiTotali);
         this.ora = ora;
+        this.prezzototale = prezzototale * prezzo;
         this.prezzo = prezzo;
+
+    }
+
+    public String getDataOraFormattata() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+        return getData().format(dateFormatter) + " " + ora.format(timeFormatter);
+    }
+
+    public String getPrezzoFormattato() {
+        return String.format("%.2f€", getPrezzoTotale());
+    }
+
+    @Override
+    public String toString() {
+        return "Ora prenotazione " + ora + ", prezzo totale" + prezzo + "";
+    }
+
+    public double getPrezzoTotale() {
+        return prezzototale;
     }
 
 }

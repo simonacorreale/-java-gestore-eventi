@@ -13,9 +13,9 @@ Dopo che l’evento è stato istanziato, chiedere all’utente se e quante preno
 
 Stampare a video il numero di posti prenotati e quelli disponibili✅
 
-Chiedere all’utente se e quanti posti vuole disdire
+Chiedere all’utente se e quanti posti vuole disdire✅
 
-Provare ad effettuare le disdette, implementando opportuni controlli
+Provare ad effettuare le disdette, implementando opportuni controlli✅
 
 Stampare a video il numero di posti prenotati e quelli disponibili 
 
@@ -112,9 +112,6 @@ public class MainTest {
 
                             try {
 
-                                // suppondo si debba trovare una condizione per salvare i dati nella variabile e
-                                // rimuoverli se piena
-
                                 concertoMetal.disdici(postiDaRimuovere);
                                 // Rimozione
                                 System.out.println(
@@ -134,6 +131,10 @@ public class MainTest {
                         }
                         default -> System.out.println("Scelta non valida. Riprova.");
                     }
+                    Concerto totale = new Concerto(titolo, data, numeroPostiTotali, prezzo, ora);
+
+                    System.out.println(totale);
+
                 }
 
             } catch (Exception e) {

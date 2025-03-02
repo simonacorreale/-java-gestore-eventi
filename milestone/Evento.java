@@ -99,7 +99,8 @@ public class Evento {
 
                 numeroPostiPrenotati += postiRichiesti;
 
-                System.out.println("Prenotazione confermata. Posti prenotati: " + numeroPostiPrenotati);
+                System.out.println(
+                        "Prenotazione confermata. Posti prenotati: " + numeroPostiPrenotati + "/" + numeroPostiTotali);
 
             } else {
 
@@ -118,7 +119,8 @@ public class Evento {
 
                 numeroPostiPrenotati -= postiDaRimuovere;
 
-                System.out.println("Cancellazione confermata. Posti prenotati rimanenti: " + numeroPostiPrenotati);
+                System.out.println("Cancellazione confermata. Posti prenotati rimanenti: " + numeroPostiPrenotati + "/"
+                        + numeroPostiTotali);
                 // forse devo inserire la conferma di quanti ne ha cancellati
 
             } else {
