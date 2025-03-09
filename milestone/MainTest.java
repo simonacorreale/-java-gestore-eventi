@@ -129,7 +129,7 @@ public class MainTest {
                         case "2" -> {
 
                             // Cancellazione posti
-
+                            System.out.println("---------------------------------------------------");
                             System.out.print("Quanti posti vuoi disdire? ");
                             int postiDaRimuovere = scanner.nextInt();
                             scanner.nextLine();
@@ -138,6 +138,7 @@ public class MainTest {
 
                                 concerto.disdici(postiDaRimuovere);
                                 // Rimozione
+                                System.out.println("---------------------------------------------------");
                                 System.out.println(
                                         "Prenotazioni annullate! Posti rimanenti: "
                                                 + concerto.getPostiPrenotati());
@@ -149,7 +150,7 @@ public class MainTest {
                         case "3" -> {
 
                             // Uscita
-
+                            System.out.println("---------------------------------------------------");
                             System.out.println("Grazie e buona giornata!");
                             continua = false;
                         }

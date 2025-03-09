@@ -30,33 +30,34 @@ public class Concerto extends Evento {
 
     }
 
-    @Override
-    public String toString() {
+    public String getOra() {
+
         // Formatter per l'ora
         DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
-        // Formatter per il prezzo
-        NumberFormat priceFormatter = NumberFormat.getCurrencyInstance(Locale.ITALY);
-
-        return "Titolo evento: " + getTitolo() + "\nData evento: " + getData() + "\nOra evento: "
-                + ora.format(timeFormatter)
-                + "\nPosti totali: " + getPostiTotali() + "\nPrezzo: " + priceFormatter.format(prezzo);
-
-    }
-
-    public LocalTime getOra() {
-        return ora;
+        String oraFormattata = ora.format(timeFormatter);
+        return oraFormattata;
     }
 
     public void setOra(LocalTime ora) {
         this.ora = ora;
     }
 
-    public double getPrezzo() {
-        return prezzo;
+    public String getPrezzo() {
+        NumberFormat priceFormatter = NumberFormat.getCurrencyInstance(Locale.ITALY);
+        return priceFormatter.format(prezzo);
     }
 
     public void setPrezzo(double prezzo) {
         this.prezzo = prezzo;
+    }
+
+    @Override
+    public String toString() {
+
+        return "Titolo evento: " + getTitolo() + "\nData evento: " + getData() + "\nOra evento: "
+                + getOra()
+                + "\nPosti totali: " + getPostiTotali() + "\nPrezzo: " + getPrezzo();
+
     }
 
 }
