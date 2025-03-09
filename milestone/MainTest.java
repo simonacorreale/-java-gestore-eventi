@@ -10,17 +10,11 @@ import java.util.regex.Pattern;
 /* 
 Step 2
 Creare una classe Main di test, in cui si chiede all’utente di inserire un nuovo evento con tutti i parametri.✅
-
 Dopo che l’evento è stato istanziato, chiedere all’utente se e quante prenotazioni vuole fare e provare ad effettuarle, implementando opportuni controlli✅
-
 Stampare a video il numero di posti prenotati e quelli disponibili✅
-
 Chiedere all’utente se e quanti posti vuole disdire✅
-
 Provare ad effettuare le disdette, implementando opportuni controlli✅
-
 Stampare a video il numero di posti prenotati e quelli disponibili ✅
-
 */
 
 public class MainTest {
@@ -92,7 +86,8 @@ public class MainTest {
                 while (continua) {
 
                     // Scelta opzione
-
+                    System.out.println("---------------------------------------------------");
+                    System.out.println(concerto);
                     System.out.println("Cosa vuoi fare?");
                     System.out.println("1. Prenotare posti");
                     System.out.println("2. Disdire prenotazioni");
@@ -115,14 +110,12 @@ public class MainTest {
                             scanner.nextLine();
 
                             try {
-
-                                // suppondo si debba trovare una condizione per salvare i dati nella variabile e
-                                // aggiungerli se vuota
+                                // Condizione 1
                                 concerto.prenota(postiRichiesti);
 
                                 System.out.println("Posti prenotati con successo! Posti attuali: "
                                         + concerto.getPostiPrenotati());
-
+                                /* Casting string prova */
                                 BigDecimal totale = concerto.getPrezzoBigDecimal()
                                         .multiply(BigDecimal.valueOf(concerto.getPostiPrenotati()));
                                 System.out.println("Costo totale: " + totale);
@@ -147,10 +140,6 @@ public class MainTest {
                                 System.out.println(
                                         "Prenotazioni annullate! Posti rimanenti: "
                                                 + concerto.getPostiPrenotati());
-
-                                BigDecimal totale = concerto.getPrezzoBigDecimal()
-                                        .multiply(BigDecimal.valueOf(concerto.getPostiPrenotati()));
-                                System.out.println("Costo totale: " + totale);
 
                             } catch (Exception e) {
                                 System.out.println("Errore: " + e.getMessage());
