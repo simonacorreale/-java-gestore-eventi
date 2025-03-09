@@ -9,43 +9,54 @@ Aggiungere i metodi per restituire data e ora formattata e prezzo formattato (##
 
  */
 
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Concerto extends Evento {
 
-    private final LocalTime ora;
-    private double prezzo = 230;
-    private double prezzototale = 0;
+    private LocalTime ora;
+    private double prezzo;
+
+    // prezzo totale
 
     // Costruttore per Concerto
-    public Concerto(String titolo, LocalDate data, int numeroPostiTotali, double prezzo, LocalTime ora,
-            double prezzototale) {
+    public Concerto(String titolo, LocalDate data, int numeroPostiTotali, LocalTime ora, double prezzo) {
         super(titolo, data, numeroPostiTotali);
         this.ora = ora;
-        this.prezzototale = prezzototale * prezzo;
         this.prezzo = prezzo;
 
     }
 
-    public String getDataOraFormattata() {
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
-        return getData().format(dateFormatter) + " " + ora.format(timeFormatter);
-    }
-
-    public String getPrezzoFormattato() {
-        return String.format("%.2f€", getPrezzoTotale());
-    }
-
     @Override
     public String toString() {
-        return "Ora prenotazione " + ora + ", prezzo totale" + prezzo + "";
+        // Formatter per l'ora
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
+        // Formatter per il prezzo
+        NumberFormat priceFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+
+        return "Titolo evento: " + getTitolo() + "\nData evento: " + getData() + "\nOra evento: "
+                + ora.format(timeFormatter)
+                + "\nPosti totali: " + getPostiTotali() + "\nPrezzo: " + priceFormatter.format(prezzo);
+
     }
 
-    public double getPrezzoTotale() {
-        return prezzototale;
+    public LocalTime getOra() {
+        return ora;
+    }
+
+    public void setOra(LocalTime ora) {
+        this.ora = ora;
+    }
+
+    public double getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(double prezzo) {
+        this.prezzo = prezzo;
     }
 
 }

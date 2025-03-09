@@ -31,7 +31,7 @@ public class Evento {
 
     private String titolo;
     private LocalDate data;
-    private int numeroPostiPrenotati = 0;
+    private int numeroPostiPrenotati;
     private int numeroPostiTotali;
 
     // Costruttore
@@ -51,6 +51,7 @@ public class Evento {
         this.titolo = titolo;
         this.data = data;
         this.numeroPostiTotali = numeroPostiTotali;
+        this.numeroPostiPrenotati = 0;
     }
 
     // Getter titolo

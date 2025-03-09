@@ -57,10 +57,15 @@ public class MainTest {
                 // Creazione evento con 100 posti disponibili
                 Evento concertoMetal = new Evento(titolo, data, 100);
 
+                Concerto concerto = new Concerto(titolo, data, 100, ora, prezzo);
+
                 // Visualizza l'evento
                 System.out.println("---------------------------------------------------");
                 System.out.println(concertoMetal);
                 System.out.println("---------------------------------------------------");
+                // Visualizza il concerto
+
+                System.out.println(concerto);
 
                 boolean continua = true;
 
@@ -131,9 +136,6 @@ public class MainTest {
                         }
                         default -> System.out.println("Scelta non valida. Riprova.");
                     }
-                    Concerto totale = new Concerto(titolo, data, numeroPostiTotali, prezzo, ora);
-
-                    System.out.println(totale);
 
                 }
 
