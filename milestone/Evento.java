@@ -75,8 +75,10 @@ public class Evento {
     };
 
     // Getter data
-    public LocalDate getData() {
-        return data;
+    public String getData() {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String dataFormattata = data.format(dateFormatter);
+        return dataFormattata;
     }
 
     // Setter data
@@ -135,11 +137,9 @@ public class Evento {
 
     @Override
     public String toString() {
-        // Classe java incorporato di ora + to string per restituire correttamente i
-        // parametri al main sottoforma di stringa
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return "Evento: " + titolo + " \nData: " + data.format(formatter) + "|" + numeroPostiPrenotati + "/"
-                + numeroPostiTotali;
+
+        return "Evento: " + titolo + " \nData: " + getData();
+
     }
 
 }

@@ -1,5 +1,6 @@
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -25,47 +26,65 @@ public class MainTest {
 
     public static void main(String[] args) {
 
-        // Implemento un try catch per effettuare i controlli necessari
-        // titolo data e visualizza numero posti totali
-        // 1 titolo
-        // 2 data
-
         Scanner scanner = new Scanner(System.in);
 
+        // Inserimento titolo
         System.out.println("---------------------------------------------------");
         System.out.println("Inserisci il titolo dell'evento: ");
         String titolo = scanner.nextLine();
 
+        // Inserimento data
         System.out.println("---------------------------------------------------");
         System.out.println("Inserisci la data dell'evento (formato dd-MM-yyyy): ");
-
         String dateString = scanner.nextLine();
 
-        // Regex per il formato "dd-MM-yyyy"
+        // Regex per il formato data "dd-MM-yyyy"
         String regex = "^([0-2][0-9]|(3)[0-1])-(0[1-9]|1[0-2])-(\\d{4})$";
 
         // Compilazione della regex
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(dateString);
 
+        // Inserimento ora concerto
+        System.out.println("---------------------------------------------------");
+        System.out.println("Inserisci l'ora dell'evento (formato HH:mm:ss): ");
+        String hourString = scanner.nextLine();
+
+        // -DA FARE- Regex per il formato dell'ora.
+
+        // Inserimento prezzo concerto
+        System.out.println("---------------------------------------------------");
+        System.out.println("Inserisci il prezzo dell'evento (formato 00,00): ");
+        String priceString = scanner.nextLine();
+
         if (matcher.matches()) {
             try {
-                // Converte la stringa in LocalDate con il formato "dd-MM-yyyy"
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                LocalDate data = LocalDate.parse(dateString, formatter);
+                // Converte la stringa dateString in LocalDate con il formato "dd-MM-yyyy"
 
-                // Creazione evento con 100 posti disponibili
-                Evento concertoMetal = new Evento(titolo, data, 100);
+                DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                LocalDate data = LocalDate.parse(dateString, dateFormatter);
 
+                // Converte la stringa hourString in LocalTime con il formato "HH:mm:ss"
+                /* DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_LOCAL_TIME; */
+                LocalTime ora = LocalTime.parse(hourString);
+
+                // Converte la stringa priceString in double con il formato "00,00"
+                /*
+                 * NumberFormat priceFormatter = NumberFormat.getCurrencyInstance(Locale.ITALY);
+                 */
+                double prezzo = Double.parseDouble(priceString);
+
+                // Creazione concerto
                 Concerto concerto = new Concerto(titolo, data, 100, ora, prezzo);
 
                 // Visualizza l'evento
                 System.out.println("---------------------------------------------------");
-                System.out.println(concertoMetal);
+                System.out.println(concerto);
+
                 System.out.println("---------------------------------------------------");
                 // Visualizza il concerto
 
-                System.out.println(concerto);
+                /* System.out.println(concerto); */
 
                 boolean continua = true;
 
@@ -98,10 +117,10 @@ public class MainTest {
 
                                 // suppondo si debba trovare una condizione per salvare i dati nella variabile e
                                 // aggiungerli se vuota
-                                concertoMetal.prenota(postiRichiesti);
+                                concerto.prenota(postiRichiesti);
 
                                 System.out.println("Posti prenotati con successo! Posti attuali: "
-                                        + concertoMetal.getPostiPrenotati());
+                                        + concerto.getPostiPrenotati());
 
                             } catch (Exception e) {
                                 System.out.println("Errore: " + e.getMessage()); // controllare bug su questo elemento
@@ -117,11 +136,11 @@ public class MainTest {
 
                             try {
 
-                                concertoMetal.disdici(postiDaRimuovere);
+                                concerto.disdici(postiDaRimuovere);
                                 // Rimozione
                                 System.out.println(
                                         "Prenotazioni annullate! Posti rimanenti: "
-                                                + concertoMetal.getPostiPrenotati());
+                                                + concerto.getPostiPrenotati());
 
                             } catch (Exception e) {
                                 System.out.println("Errore: " + e.getMessage());

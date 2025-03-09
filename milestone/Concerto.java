@@ -35,7 +35,7 @@ public class Concerto extends Evento {
         // Formatter per l'ora
         DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
         // Formatter per il prezzo
-        NumberFormat priceFormatter = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+        NumberFormat priceFormatter = NumberFormat.getCurrencyInstance(Locale.ITALY);
 
         return "Titolo evento: " + getTitolo() + "\nData evento: " + getData() + "\nOra evento: "
                 + ora.format(timeFormatter)
