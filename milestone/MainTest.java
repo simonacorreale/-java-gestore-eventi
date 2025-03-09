@@ -1,4 +1,5 @@
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +19,7 @@ Chiedere all’utente se e quanti posti vuole disdire✅
 
 Provare ad effettuare le disdette, implementando opportuni controlli✅
 
-Stampare a video il numero di posti prenotati e quelli disponibili 
+Stampare a video il numero di posti prenotati e quelli disponibili ✅
 
 */
 
@@ -54,8 +55,10 @@ public class MainTest {
 
         // Inserimento prezzo concerto
         System.out.println("---------------------------------------------------");
-        System.out.println("Inserisci il prezzo dell'evento (formato 00,00): ");
+        System.out.println("Inserisci il prezzo dell'evento (formato 000,00): ");
         String priceString = scanner.nextLine();
+
+        // -DA FARE- Regex per il formato prezzo
 
         if (matcher.matches()) {
             try {
@@ -65,14 +68,12 @@ public class MainTest {
                 LocalDate data = LocalDate.parse(dateString, dateFormatter);
 
                 // Converte la stringa hourString in LocalTime con il formato "HH:mm:ss"
-                /* DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_LOCAL_TIME; */
                 LocalTime ora = LocalTime.parse(hourString);
 
-                // Converte la stringa priceString in double con il formato "00,00"
-                /*
-                 * NumberFormat priceFormatter = NumberFormat.getCurrencyInstance(Locale.ITALY);
-                 */
-                double prezzo = Double.parseDouble(priceString);
+                // Converte la stringa priceString in double con il formato "000,00"
+                // Sostituzione da double ad implementazione della classe BigDecimal per gestire
+                // i numeri con cifre superiori.
+                BigDecimal prezzo = new BigDecimal(priceString.replace(",", "."));
 
                 // Creazione concerto
                 Concerto concerto = new Concerto(titolo, data, 100, ora, prezzo);
@@ -122,6 +123,10 @@ public class MainTest {
                                 System.out.println("Posti prenotati con successo! Posti attuali: "
                                         + concerto.getPostiPrenotati());
 
+                                BigDecimal totale = concerto.getPrezzoBigDecimal()
+                                        .multiply(BigDecimal.valueOf(concerto.getPostiPrenotati()));
+                                System.out.println("Costo totale: " + totale);
+
                             } catch (Exception e) {
                                 System.out.println("Errore: " + e.getMessage()); // controllare bug su questo elemento
                             }
@@ -142,6 +147,10 @@ public class MainTest {
                                 System.out.println(
                                         "Prenotazioni annullate! Posti rimanenti: "
                                                 + concerto.getPostiPrenotati());
+
+                                BigDecimal totale = concerto.getPrezzoBigDecimal()
+                                        .multiply(BigDecimal.valueOf(concerto.getPostiPrenotati()));
+                                System.out.println("Costo totale: " + totale);
 
                             } catch (Exception e) {
                                 System.out.println("Errore: " + e.getMessage());

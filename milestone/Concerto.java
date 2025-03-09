@@ -9,6 +9,7 @@ Aggiungere i metodi per restituire data e ora formattata e prezzo formattato (##
 
  */
 
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -18,16 +19,15 @@ import java.util.Locale;
 public class Concerto extends Evento {
 
     private LocalTime ora;
-    private double prezzo;
+    private BigDecimal prezzo;
 
     // prezzo totale
 
     // Costruttore per Concerto
-    public Concerto(String titolo, LocalDate data, int numeroPostiTotali, LocalTime ora, double prezzo) {
+    public Concerto(String titolo, LocalDate data, int numeroPostiTotali, LocalTime ora, BigDecimal prezzo) {
         super(titolo, data, numeroPostiTotali);
         this.ora = ora;
         this.prezzo = prezzo;
-
     }
 
     public String getOra() {
@@ -47,7 +47,12 @@ public class Concerto extends Evento {
         return priceFormatter.format(prezzo);
     }
 
-    public void setPrezzo(double prezzo) {
+    // Nuovo metodo per ottenere il prezzo come BigDecimal
+    public BigDecimal getPrezzoBigDecimal() {
+        return this.prezzo;
+    }
+
+    public void setPrezzo(BigDecimal prezzo) {
         this.prezzo = prezzo;
     }
 
