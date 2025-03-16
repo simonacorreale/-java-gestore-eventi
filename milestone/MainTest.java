@@ -38,24 +38,46 @@ public class MainTest {
 
         // Compilazione della regex
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(dateString);
+        Matcher matcherData = pattern.matcher(dateString);
 
         // Inserimento ora concerto
         System.out.println("---------------------------------------------------");
         System.out.println("Inserisci l'ora dell'evento (formato HH:mm:ss): ");
         String hourString = scanner.nextLine();
 
-        // -DA FARE- Regex per il formato dell'ora.
+        // Regex per il formato dell'ora.
+        String regexOra = "^([01]?[0-9]|2[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$";
+        Pattern patternOra = Pattern.compile(regexOra);
+        Matcher matcherOra = patternOra.matcher(hourString);
 
         // Inserimento prezzo concerto
         System.out.println("---------------------------------------------------");
         System.out.println("Inserisci il prezzo dell'evento (formato 000,00): ");
         String priceString = scanner.nextLine();
 
-        // -DA FARE- Regex per il formato prezzo
+        // Regex per il formato prezzo
+        String regexPrezzo = "^\\d{1,3}(?:\\.\\d{3})*(?:,\\d{2})$";
+        Pattern patternPrezzo = Pattern.compile(regexPrezzo);
+        Matcher matcherPrezzo = patternPrezzo.matcher(priceString);
 
-        if (matcher.matches()) {
+        // Verifica che tutte le regex siano valide
+        boolean validData = matcherData.matches();
+        boolean validOra = matcherOra.matches();
+        boolean validPrezzo = matcherPrezzo.matches();
+
+        if (!validData) {
+            System.out.println("Errore: Formato data non valido. Usa il formato dd-MM-yyyy.");
+        }
+        if (!validOra) {
+            System.out.println("Errore: Formato ora non valido. Usa il formato HH:mm:ss.");
+        }
+        if (!validPrezzo) {
+            System.out.println("Errore: Formato prezzo non valido. Usa il formato 000,00.");
+        }
+
+        if (validData && validOra && validPrezzo) {
             try {
+
                 // Converte la stringa dateString in LocalDate con il formato "dd-MM-yyyy"
 
                 DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
