@@ -1,5 +1,4 @@
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,11 +40,11 @@ public class ProgrammaEventi {
 
     // un metodo che restituisce una lista con tutti gli eventi presenti in una
     // certa data
-    public void mostraEventi(LocalDate data) {
+    public void mostraEventi(String data) {
 
         for (Evento evento1 : eventi) {
 
-            if (evento1.getData().equals(data.toString())) {
+            if (evento1.getData().equals(data)) {
                 // il for each mi fa controllare
 
                 System.out.println(evento1);
