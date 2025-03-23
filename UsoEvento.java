@@ -35,9 +35,14 @@ public class UsoEvento {
         programmaEventi.aggiungiEvento(evento1);
         programmaEventi.aggiungiEvento(evento2);
         programmaEventi.aggiungiEvento(evento3);
-
-        System.out.println("Lista di eventi");
+        System.out.println("Lista di tutti gli eventi");
+        System.out.println(programmaEventi.eventi);
+        System.out.println("Lista degli eventi del giorno 23 marzo 2025");
         programmaEventi.mostraEventi(parsedDate);
+
+        programmaEventi.resetListaEventi();
+        System.out.println("Lista di tutti gli eventi");
+        System.out.println(programmaEventi.eventi);
 
         scanner.close();
 
