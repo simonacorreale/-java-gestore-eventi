@@ -11,8 +11,6 @@ Stampare a video il numero di posti prenotati e quelli disponibili ✅
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class UsoEvento {
@@ -31,7 +29,7 @@ public class UsoEvento {
 
         // List<Evento> eventi = new ArrayList<>();
 
-        ProgrammaEventi programmaEventi = new ProgrammaEventi("Culo Estivo");
+        ProgrammaEventi programmaEventi = new ProgrammaEventi("Estivo");
         Evento evento1 = new Evento("evento 1", LocalDate.now(), 100);
         Evento evento2 = new Evento("evento 2", LocalDate.now(), 100);
         Evento evento3 = new Evento("evento 3", LocalDate.now(), 100);
@@ -40,13 +38,12 @@ public class UsoEvento {
         programmaEventi.aggiungiEvento(evento2);
         programmaEventi.aggiungiEvento(evento3);
         System.out.println("Lista di tutti gli eventi");
-        System.out.println(programmaEventi.eventi);
+
         System.out.println("Lista degli eventi del giorno 23 marzo 2025");
         programmaEventi.mostraEventi(parsedDate);
 
         programmaEventi.resetListaEventi();
         System.out.println("Lista di tutti gli eventi");
-        System.out.println(programmaEventi.eventi);
 
         scanner.close();
 
