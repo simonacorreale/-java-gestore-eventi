@@ -11,6 +11,8 @@ Stampare a video il numero di posti prenotati e quelli disponibili ✅
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UsoEvento {
@@ -26,6 +28,8 @@ public class UsoEvento {
 
         // Formattare la data nel formato "dd-MM-yyyy"
         String parsedDate = date.format(formatter);
+
+        // List<Evento> eventi = new ArrayList<>();
 
         ProgrammaEventi programmaEventi = new ProgrammaEventi("Culo Estivo");
         Evento evento1 = new Evento("evento 1", LocalDate.now(), 100);

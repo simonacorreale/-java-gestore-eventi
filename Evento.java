@@ -99,7 +99,6 @@ public class Evento {
 
                 System.out.println("Cancellazione confermata. Posti prenotati rimanenti: " + numeroPostiPrenotati + "/"
                         + numeroPostiTotali);
-                // forse devo inserire la conferma di quanti ne ha cancellati
 
             } else {
                 eccezioniSpeciali("Non puoi cancellare più posti di quelli prenotati. Posti prenotati attuali: "

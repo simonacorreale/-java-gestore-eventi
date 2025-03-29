@@ -42,11 +42,11 @@ public class MainTest {
 
         // Inserimento ora concerto
         System.out.println("---------------------------------------------------");
-        System.out.println("Inserisci l'ora dell'evento (formato HH:mm:ss): ");
+        System.out.println("Inserisci l'ora dell'evento (formato HH:mm): ");
         String hourString = scanner.nextLine();
 
         // Regex per il formato dell'ora.
-        String regexOra = "^([01]?[0-9]|2[0-3]):([0-5]?[0-9]):([0-5]?[0-9])$";
+        String regexOra = "^([01]?[0-9]|2[0-3]):([0-5]?[0-9])$";
         Pattern patternOra = Pattern.compile(regexOra);
         Matcher matcherOra = patternOra.matcher(hourString);
 
@@ -69,7 +69,7 @@ public class MainTest {
             System.out.println("Errore: Formato data non valido. Usa il formato dd-MM-yyyy.");
         }
         if (!validOra) {
-            System.out.println("Errore: Formato ora non valido. Usa il formato HH:mm:ss.");
+            System.out.println("Errore: Formato ora non valido. Usa il formato HH:mm");
         }
         if (!validPrezzo) {
             System.out.println("Errore: Formato prezzo non valido. Usa il formato 000,00.");
@@ -143,7 +143,7 @@ public class MainTest {
                                 System.out.println("Costo totale: " + totale);
 
                             } catch (Exception e) {
-                                System.out.println("Errore: " + e.getMessage()); // controllare bug su questo elemento
+                                System.out.println("Errore: " + e.getMessage());
                             }
                         }
                         case "2" -> {

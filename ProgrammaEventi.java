@@ -56,6 +56,11 @@ public class ProgrammaEventi {
         }
     }
 
+    // Metodo che restituisce il numero di eventi
+    public int getNumeroEventi() {
+        return eventi.size();
+    }
+
     // Un metodo che svuota la lista di eventi
 
     public void resetListaEventi() {

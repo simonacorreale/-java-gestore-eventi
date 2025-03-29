@@ -33,7 +33,7 @@ public class Concerto extends Evento {
     public String getOra() {
 
         // Formatter per l'ora
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ISO_LOCAL_TIME;
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
         String oraFormattata = ora.format(timeFormatter);
         return oraFormattata;
     }
